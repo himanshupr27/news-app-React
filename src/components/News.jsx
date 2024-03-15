@@ -3,6 +3,7 @@ import NewsItem from './NewsItem';
 import Spinner from './Spinner';
 import PropTypes from 'prop-types';
 import InfiniteScroll from "react-infinite-scroll-component";
+import env from "dotenv";
 
 function News(props) {
 
@@ -19,7 +20,7 @@ function News(props) {
     document.title = `Daily Hunt- ${capitalizeFirstLetter(props.category)}`;
     const updateNews = async () => {
       setLoading(true);
-      let result = await fetch(`https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=c5c85edc6fb34ca09e934eae79e96bc3&page=${page}&pageSize=${props.pageSize}`);
+      let result = await fetch(`https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${process.env.API_KEY}=${page}&pageSize=${props.pageSize}`);
       let finalResult = await result.json();
       let data = finalResult.articles;
       setArticle(prev=>[...prev,...data]);
@@ -55,7 +56,7 @@ function News(props) {
   //  },[])
 
   const fetchMoreData = async () => {
-    const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=c5c85edc6fb34ca09e934eae79e96bc3&page=${page + 1}&pageSize=${props.pageSize}`;
+    const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${process.env.API_KEY}=${page + 1}&pageSize=${props.pageSize}`;
     setPage(page + 1)
     let data = await fetch(url);
     let parsedData = await data.json()
