@@ -42,11 +42,11 @@ function News(props) {
   //    updateNews();
   //  }
   
-  //Different way of infinite scroll
+  // Different way of infinite scroll
   // const handleScroll=()=>{
   //   if(window.innerHeight + document.documentElement.scrollTop +1 >=document.documentElement.scrollHeight){
   //     setPage(prev => prev+1);
-  //     setLoadingg(true);
+  //     setLoading(true);
   //   }
   // };
   //  useEffect(()=>{
@@ -65,12 +65,14 @@ function News(props) {
   return (
     <>
       <h1 className="text-center" style={{ marginTop: "90px" }}>TOP HEADLINES - {(props.category).toUpperCase()} HEADLINES</h1>
-      {loading && <Spinner />}
+      {/* {loading && <Spinner />} */}
+      <div id="usingScroll"  style={{height:"500px", overflow:"auto"}}>
       <InfiniteScroll
         dataLength={article.length}
         next={fetchMoreData}
         hasMore={article.length !== totalResults}
         loader={<Spinner />}
+        scrollableTarget="usingScroll"
       >
         <div className="container">
           <div className="row my-3">
@@ -87,6 +89,7 @@ function News(props) {
           </div>
         </div>
       </InfiniteScroll>
+      </div>
     </>
   )
 }
