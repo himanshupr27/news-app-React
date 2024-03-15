@@ -1,0 +1,11 @@
+{
+  "files": {
+    "main.js": "/news-app-React/static/js/main.c1cdc80c.js",
+    "static/media/loading1.gif": "/news-app-React/static/media/loading1.113300e126d6cc626e60.gif",
+    "index.html": "/news-app-React/index.html",
+    "main.c1cdc80c.js.map": "/news-app-React/static/js/main.c1cdc80c.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.c1cdc80c.js"
+  ]
+}
